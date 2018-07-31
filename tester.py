@@ -12,16 +12,11 @@ from MusicPlayer import MusicPlayer
 from SocketClient import SocketClient
 from Widget import Widget, TextWidget, Position, TimeWidget
 from Alarm import Alarm, AlarmWidget
+from TimerObject import TimerObject
 
-
-modified = []
-modified = False
-
-if not modified:
-    print('this is possible')
-    modified = ["hello"]
-
-if not modified:
-    print('Weird stuff')
-else:
-    print('regular stuff')
+q = Queue()
+screen = MainScreen(q)
+timerObject = TimerObject(screen)
+timerObject.addObject(screen.changeBackground, ('1900', -1), "black")
+timerObject.addObject(screen.changeBackground, ('1901', -1), "white")
+screen.start()

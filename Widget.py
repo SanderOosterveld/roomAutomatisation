@@ -48,6 +48,7 @@ class TextWidget(Widget):
         self.text = widgetText
         self.config(text = self.text)
         self.startTransparent(self.root['bg'])
+        self.changeBackground(self.root['bg'])
         
 
     def getText(self):

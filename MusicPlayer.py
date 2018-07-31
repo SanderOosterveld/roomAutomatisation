@@ -46,12 +46,3 @@ class MusicPlayer():
     def getSong(self):
         
         return self.musicFile
-    
-musicPlayer = MusicPlayer('disturbed.ogg')
-musicPlayer.start()
-time.sleep(2)
-musicPlayer.pause()
-time.sleep(1)
-musicPlayer.unpause()
-time.sleep(2)
-musicPlayer.shutdown()

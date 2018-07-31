@@ -7,13 +7,13 @@ Created on Tue Jul 17 17:17:48 2018
 
 from Widget import TextWidget, Position
 #from MainScreen import MainScreen
-#from MusicPlayer import MusicPlayer
+from MusicPlayer import MusicPlayer
 import datetime
 
 class AlarmWidget(TextWidget):
     
     def __init__(self, master, alarm, *args, **kwargs):
-        TextWidget.__init__(self, master, Position(0.9,0.5),"", *args, **kwargs)
+        TextWidget.__init__(self, master, Position(0.95,0.01),"alarm set at: " + alarm.getTime(), *args, **kwargs)
         self.root = master
         self.alarm = alarm
         self.allAlarms = [self.alarm]
