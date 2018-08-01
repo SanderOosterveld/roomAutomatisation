@@ -31,11 +31,8 @@ class TimerObject():
     
     def run(self):
         if len(self.allObjects) > 0:
-            print(self.allObjects)
             for func in self.allObjects:
-                print(self.allObjects[func])
                 for argument in self.allObjects[func]:
-                    print("testing")
                     condition = argument[0]
                     args = argument[1]
                     
