@@ -18,7 +18,8 @@ class AlarmWidget(TextWidget):
         self.alarm = alarm
         self.allAlarms = [self.alarm]
         self.musicPlayer = MusicPlayer(alarm.getSound()) 
-        self.alarmLength = 5
+        self.alarmLength = 20
+        self.startChecker()
         
     
     def getAlarmLength(self):
@@ -68,20 +69,15 @@ class AlarmWidget(TextWidget):
         '''
         starts an infinite loop checking for an alarm
         '''
-        print("checking alarm")
         stringTime = self.__timeMaker()
         timeToAlarm = {}
         for alarm in self.allAlarms:
             timeToAlarm[alarm.getTime()] = alarm
-        print(timeToAlarm)
-        print(stringTime)
         if stringTime in timeToAlarm.keys():
-            print("stringTime equal to alarmset")
             possibleAlarm = timeToAlarm[stringTime]
             if possibleAlarm.getActivity():
                 self.alarmProtocol(self.getAlarmLength(), timeToAlarm[stringTime], 1)
                 possibleAlarm.deactivate()
-                print("alarmProtocol was started...")
         self.after(6000, self.__alarmChecker)
                 
         

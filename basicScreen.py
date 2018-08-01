@@ -14,7 +14,7 @@ from TimerObject import TimerObject
 q = Queue()
 screen = MainScreen(q)
 screen.changeBackground('white')
-alarm = Alarm("0855", "disturbed.ogg", True)
+alarm = Alarm("0857", "disturbed.ogg", True)
 alarmWidget = AlarmWidget(screen, alarm)
 timeWidget = TimeWidget(screen)
 alarmWidget.make()
