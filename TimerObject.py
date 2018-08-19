@@ -18,7 +18,7 @@ class TimerObject():
         '''
         function which should be executed at a certain time
         conditions in following format: (string time(e.g.: 2300), tuple with days of the week monday =0(e.g.  (1,2,5), -1) -1 for all days)
-        Total would be addObject(screen.changeBackground, (2300,-1), "Black") to change screen to black every day at 23h
+        Total would be addObject(screen.changeBackground, (2300,-1), "black") to change screen to black every day at 23h
         '''
         
         if function not in self.allObjects:
@@ -85,6 +85,24 @@ class TimerObject():
         
         return False
                 
+    def addAlarm(self, alarm):
+        days = alarm.getRepeat()
+        time = alarm.addTime(1)
+        if days != False:
+            self.addObject(alarm.activate, (time, days))
+    
+    def updateAlarm(self, alarm):
+        if alarm.activate in self.allObjects:
+            self.removeFunction(alarm.activate)
+            self.addAlarm(alarm)
+        else:
+            print("alarm not found adding it")
+            self.addAlarm(alarm)
+
+        
+        
+        
+        
         
     def getObjects(self):
         return self.allObjects

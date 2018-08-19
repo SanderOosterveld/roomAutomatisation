@@ -43,6 +43,13 @@ class DataHandler():
             
         
     
+    def readData(self):
+        '''
+        outputs a string which can be read by android
+        '''
+        
+    
+    
     def setModifiedFalse(self):
         self.modified = [False]
 

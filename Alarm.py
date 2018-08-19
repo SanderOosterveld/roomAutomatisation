@@ -112,7 +112,19 @@ class Alarm():
         self.time = time
         self.sound = song
         self.active = active
-            
+        self.repeat = False
+        
+    def setRepeat(self, condition):
+        '''
+        adds a repeat statement, if the repeat needs to be removed enter False.
+        
+        format = <tuple of days 0 = monday> e.g. (0,1,2,3,4) to set alarm every weekday
+        '''
+        self.repeat = condition    
+    
+    def getRepeat(self):
+        return self.repeat
+        
         
     def setAlarmSong(self, alarmSong):
         self.sound = alarmSong
@@ -134,6 +146,36 @@ class Alarm():
     
     def getSound(self):
         return self.sound
+    
+    
+    def timeMaker(self, hour, minute):
+        if hour<10:
+            stringHour = '0'+str(hour)
+        else:
+            stringHour = str(hour)
+        
+        if minute < 10:
+            stringMinute = '0' + str(minute)
+        else:
+            stringMinute = str(minute)
+        
+        return stringHour + stringMinute
+        
+        
+    def addTime(self, addedMinutes):
+        '''
+        adds a couple minutes to the alarm and returns the new time
+        '''
+        currentMinutes = int(self.time[2:4])
+        currentHours = int(self.time[0:2])
+        newMinutes = (addedMinutes+currentMinutes)%60
+        addedHours = int((addedMinutes+currentMinutes)/60)
+        newHours = (currentHours+addedHours)%24
+        return self.timeMaker(newHours, newMinutes)
+    
+    
+    def __str__(self):
+        return self.getTime() + ':' + str(self.getRepeat()) + ':' + self.getSound() + ':' + str(self.getActivity())
     
     
 #some fun comments      

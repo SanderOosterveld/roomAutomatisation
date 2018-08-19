@@ -101,20 +101,19 @@ class MainScreen(Tk):
         def changeBackground(newBackground):
             self.changeBackground(newBackground)
             
-        def setAlarm(alarmTime):
-            alarm = Alarm(alarmTime, 'disturbed.ogg', True)
-            for child in self.winfo_children():
-                if str(child) == 'AlarmWidget present':
-                    child.addAlarm(alarm)
-        
-        
+        def setAlarm(alarmData):
+            for alarm in alarmData:
+                for child in self.winfo_children():
+                    if str(child) == 'AlarmWidget present':
+                        child.addAlarm(alarm)
+            
+
 
                 
         
         
         try:
             dataHandler = self.queue.get(0)
-            
             if dataHandler.getModified()[0]:
                 for function in dataHandler.getModified():
                     dataHandler.function()
